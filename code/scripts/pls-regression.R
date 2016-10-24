@@ -2,6 +2,7 @@
 
 # required packages
 library(pls)
+source("../functions/regression-functions.R")
 
 # import train and test data
 load("../../data/train-test.RData")
@@ -30,4 +31,5 @@ plsr_full <- plsr(Balance ~., data = test, ncomp = 8)
 
 # save objects to file
 save(plsr_cv,plsr_lambda,plsr_test_mse, plsr_full, file = "../../data/plsr-cv.RData")
+
 
