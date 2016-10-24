@@ -2,6 +2,7 @@
 
 # required packages
 library(glmnet)
+source("../functions/regression-functions.R")
 
 # import train and test data
 load("../../data/train-test.RData")
@@ -35,6 +36,20 @@ png("../../images/lasso-cv.png")
 plot(lasso_cv)
 dev.off()
 
+# compute mse using test data
+x_test = as.matrix(test[,-12])
+y_test = test[,12]
+lasso_pred = predict(lasso_cv, s = lasso_lambda, newx = x_test) 
+lasso_test_mse = mse(lasso_pred,y_test)
+
+# full model
+x_full <- as.matrix(scaled_credit[,-12])
+y_full = scaled_credit[,12]
+lasso_full <- glmnet(x_full,y_full,
+                      alpha = alpha, intercept=intercept,
+                      standardize=standardize, lambda = lasso_lambda,
+                      family="gaussian")
+
 # save objects to file
-save(lasso_cv,lasso_lambda,lasso_test_mse, file = "../../data/lasso-cv.RData")
+save(lasso_cv,lasso_lambda,lasso_test_mse, lasso_full, file = "../../data/lasso-cv.RData")
 
