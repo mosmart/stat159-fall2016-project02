@@ -24,8 +24,6 @@ lasso_cv <- cv.glmnet(x,y,
                       standardize=standardize, lambda = lambda,
                       family="gaussian")
 
-# save model outputs from 10k cv
-save(lasso_cv, file = "../../data/lasso-cv.RData")
 
 # best model
 lasso_lambda <- lasso_cv$lambda.min
