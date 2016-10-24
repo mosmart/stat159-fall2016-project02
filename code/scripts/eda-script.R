@@ -1,6 +1,6 @@
 # Exploratory Data Analysis (EDA)
 
-# Downloading the data
+# importing the data
 credit_full <- read.table('../../data/Credit.csv', header=TRUE, sep=',')
 
 ###################
