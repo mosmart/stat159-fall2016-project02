@@ -1,3 +1,2 @@
 # Mean Squared Error
-mse <- function(sm) 
-    mean(sm$residuals^2)
+mse = function(x,y) { mean((x-y)^2)}
