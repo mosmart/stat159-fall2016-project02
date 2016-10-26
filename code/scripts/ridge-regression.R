@@ -50,4 +50,4 @@ ridge_full <- glmnet(x_full,y_full,
                      family="gaussian")
 
 # save objects to file
-save(ridge_cv,ridge_lambda,ridge_test_mse, ridge_full, file = "../../data/ridge-cv.RData")
+save(ridge_cv,ridge_lambda,ridge_test_mse, ridge_full, file = "../../data/ridge-cv.RData") 
