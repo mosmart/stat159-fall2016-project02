@@ -13,7 +13,7 @@ standardize = FALSE
 grid <- 10^seq(10, -2, length = 100)
 lambda = grid
 alpha = 1
-x = as.matrix(train[,-12])
+x = as.matrix(train[,-c(2:3,12)]) # remove rating and limit because highly correlated with income
 y = train[,12]
 family = c("gaussian")
 
@@ -35,13 +35,13 @@ plot(lasso_cv)
 dev.off()
 
 # compute mse using test data
-x_test = as.matrix(test[,-12])
+x_test = as.matrix(test[,-c(2:3,12)])
 y_test = test[,12]
 lasso_pred = predict(lasso_cv, s = lasso_lambda, newx = x_test) 
 lasso_test_mse = mse(lasso_pred,y_test)
 
 # full model
-x_full <- as.matrix(scaled_credit[,-12])
+x_full <- as.matrix(scaled_credit[,-c(2:3,12)])
 y_full = scaled_credit[,12]
 lasso_full <- glmnet(x_full,y_full,
                       alpha = alpha, intercept=intercept,
