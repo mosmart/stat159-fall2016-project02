@@ -97,12 +97,16 @@ dev.off()
 sink('../../data/summary-stats.txt')
 summary
 sd_range
+print("Frequency Gender")
 frequency_gender
 rel_frequency_gender
+print("Frequency Student")
 frequency_student
 rel_frequency_student
+print("Frequency Married")
 frequency_married
 rel_frequency_married
+print("Frequency Ethnicity")
 frequency_ethnicity
 rel_frequency_ethnicity
 sink()
