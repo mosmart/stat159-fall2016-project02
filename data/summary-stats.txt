@@ -1,0 +1,50 @@
+     Income           Limit           Rating          Cards      
+ Min.   : 10.35   Min.   :  855   Min.   : 93.0   Min.   :1.000  
+ 1st Qu.: 21.01   1st Qu.: 3088   1st Qu.:247.2   1st Qu.:2.000  
+ Median : 33.12   Median : 4622   Median :344.0   Median :3.000  
+ Mean   : 45.22   Mean   : 4736   Mean   :354.9   Mean   :2.958  
+ 3rd Qu.: 57.47   3rd Qu.: 5873   3rd Qu.:437.2   3rd Qu.:4.000  
+ Max.   :186.63   Max.   :13913   Max.   :982.0   Max.   :9.000  
+      Age          Education        Balance       
+ Min.   :23.00   Min.   : 5.00   Min.   :   0.00  
+ 1st Qu.:41.75   1st Qu.:11.00   1st Qu.:  68.75  
+ Median :56.00   Median :14.00   Median : 459.50  
+ Mean   :55.67   Mean   :13.45   Mean   : 520.01  
+ 3rd Qu.:70.00   3rd Qu.:16.00   3rd Qu.: 863.00  
+ Max.   :98.00   Max.   :20.00   Max.   :1999.00  
+                   SD    Range
+Income      35.244273   176.28
+Limit     2308.198848 13058.00
+Rating     154.724143   889.00
+Cards        1.371275     8.00
+Age         17.249807    75.00
+Education    3.125207    15.00
+Balance    459.758877  1999.00
+[1] "Frequency Gender"
+
+  Male Female 
+   193    207 
+
+  Male Female 
+0.4825 0.5175 
+[1] "Frequency Student"
+
+ No Yes 
+360  40 
+
+ No Yes 
+0.9 0.1 
+[1] "Frequency Married"
+
+ No Yes 
+155 245 
+
+    No    Yes 
+0.3875 0.6125 
+[1] "Frequency Ethnicity"
+
+African American            Asian        Caucasian 
+              99              102              199 
+
+African American            Asian        Caucasian 
+          0.2475           0.2550           0.4975 
