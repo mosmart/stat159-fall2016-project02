@@ -10,7 +10,7 @@ load("../../data/train-test.RData")
 
 # Step 1/2: 10-fold cross validation (using training data)
 set.seed(10)
-pcr_cv <- pcr(Balance ~., data = train, validation = "CV")
+pcr_cv <- pcr(Balance ~., data = train[-c(2:3)], validation = "CV")
 
 # Step 3: best model
 pcr_lambda <- min(pcr_cv$validation$PRESS)
@@ -22,13 +22,13 @@ validationplot(pcr_cv, val.type = "MSEP")
 dev.off()
 
 # Step 5: compute mse using test data
-x_test = as.matrix(test[,-12])
+x_test = as.matrix(test[,-c(2:3,12)])
 y_test = test[,12]
-pcr_pred = predict(pcr_cv, s = pcr_lambda, newx = x_test) 
+pcr_pred = predict(pcr_cv, s = pcr_lambda, newx = x_test, ncomp=2) 
 pcr_test_mse = mse(pcr_pred,y_test)
 
 # Step 6: full model
-pcr_full <- pcr(Balance ~., data = test, ncomp = 8)
+pcr_full <- pcr(Balance ~., data = test[,-c(2:3)], ncomp = 2)
 
 # save objects to file
 save(pcr_cv,pcr_lambda, pcr_test_mse, pcr_full, file = "../../data/pcr-cv.RData")
