@@ -38,8 +38,9 @@ report: ./report/report.Rmd ./data/*.RData ./images/*.png
 slides:
 	cd ./report && { Rscript -e "rmarkdown::render('slides.Rmd')" ; cd -; }
 
-session: ./code/scripts/session-info-script.R
+session: ./code/scripts/session-info-script.R ./code/scripts/bash-info-script.sh
 	cd ./code/scripts && { Rscript session-info-script.R ; cd -; }
+	cd ./code/scripts && { sh bash-info-script.sh ; cd -; }
 
 clean:
 	rm -f ./report/report.pdf
