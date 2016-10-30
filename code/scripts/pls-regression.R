@@ -33,3 +33,4 @@ plsr_full <- plsr(Balance ~., data = test, ncomp = 8)
 save(plsr_cv,plsr_lambda,plsr_test_mse, plsr_full, file = "../../data/plsr-cv.RData")
 
 
+
