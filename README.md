@@ -6,7 +6,7 @@
 Coduct a similar analysis to the ones performed by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani in Chapter 6, *Linear Regression*, in "An Introduction to Statistical Learning." Also write functions and test them using the R `testthat` package and output a slide deck using io slides.
 
 ## File Structure
-<pre><code>
+<pre>
 stat159-fall2016-project2/
    README.md
    Makefile
