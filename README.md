@@ -37,7 +37,7 @@ stat159-fall2016-project2/
          05-results.Rmd
          06-conclusions.Rmd
    slides/
-<code></pre>
+</pre>
 
 
 ## Replicating this analysis
