@@ -36,13 +36,13 @@ plot(ridge_cv)
 dev.off()
 
 # Step 5: compute mse using test data
-x_test = as.matrix(test[,-12])
+x_test = as.matrix(test[,-c(2:3,12)])
 y_test = test[,12]
 ridge_pred = predict(ridge_cv, s = ridge_lambda, newx = x_test) 
 ridge_test_mse = mse(ridge_pred,y_test)
 
 # Step 6: full model
-x_full <- as.matrix(scaled_credit[,-12])
+x_full <- as.matrix(scaled_credit[,-c(2:3,12)])
 y_full = scaled_credit[,12]
 ridge_full <- glmnet(x_full,y_full,
                      alpha = alpha, intercept=intercept,
