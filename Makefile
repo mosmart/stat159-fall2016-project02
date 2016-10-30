@@ -1,6 +1,6 @@
 .PHONY: all data tests eda old ridge lasso per plsr regressions report slides session clean
 
-data: 
+data:
 	cd ./data && { curl -O http://www-bcf.usc.edu/~gareth/ISL/Credit.csv ; cd -; }
 
 tests: ./code/functions/regression-functions.R ./code/tests/test-regression.R
@@ -25,17 +25,18 @@ plsr: ./code/scripts/plsr-regression.R ./data/Credit.csv
 	cd ./code/scripts && { Rscript plsr-regression.R ; cd -; }
 
 regressions:
-    make ols
-    make ridge
-    make lasso
-    make pcr
-    make plsr
+	make ols
+	make ridge
+	make lasso
+	make pcr
+	make plsr
+
 
 report: ./report/report.Rmd ./data/*.RData ./images/*.png
 	cd ./report && { Rscript -e "rmarkdown::render('report.Rmd')" ; cd -; }
 
 slides:
-	cd ./report && { Rscript -e "rmarkdown::render(‘slides.Rmd')" ; cd -; }
+	cd ./report && { Rscript -e "rmarkdown::render('slides.Rmd')" ; cd -; }
 
 session: ./code/scripts/session-info-script.R
 	cd ./code/scripts && { Rscript session-info-script.R ; cd -; }
