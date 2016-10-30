@@ -36,8 +36,8 @@ stat159-fall2016-project2/
          04-analysis.Rmd
          05-results.Rmd
          06-conclusions.Rmd
-   slides/
-<code><pre>
+   slides/<code><pre>
+
 
 ## Replicating this analysis
 1. Clone this gitHub folder `stat159-fall2016-project02`
