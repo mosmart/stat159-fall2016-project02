@@ -14,7 +14,7 @@ standardize = FALSE
 grid <- 10^seq(10, -2, length = 100)
 lambda = grid
 alpha = 0 #ridge penalty
-x = as.matrix(train[,-12])
+x = as.matrix(train[,-c(2:3,12)]) # remove rating and limit because highly correlated with income
 y = train[,12]
 family = c("gaussian")
 
