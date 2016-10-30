@@ -1,4 +1,5 @@
 library(testthat)
+library(glmnet)
 
 # Create a prediction for testing
 intercept = FALSE
