@@ -81,3 +81,13 @@ knitr::include_graphics("../../images/boxplot-ethnicity.png")
 ```
 
 In these conditional boxplots we can see that there is some variation in each boxplot amongst the different options, and in the conditional boxplot of Balance on Student, we note a higher difference in Balance between students and non-students.
+
+### Data formatting and standardization
+
+In order to use all of the qualitative variables in our models we will create, it was necessary to convert factors into dummy variables. This assured that qualitative variables would be represented quantitatively, and could be used as predictors to the response. For example, we converted `Married` to a boolean value of 1 if the individual indicated that they are married and 0 if the indivdiual indicated they are not married.
+
+Another important part of the pre-modeling data process was to mean center and standardize all of the variables. This means that each variable will have mean zero, and standard deviation one. This was to avoid favoring a certain coefficient. 
+
+### Training and testing sets
+
+To test our models, it was important for us to create training data (for the model to learn on) and testing data (to test how accurate our model is in predicting the response). Since our dataset contains 400 observations, our _training set_ is comprised of 300 random samples, and our _testing  set_ is 100 observations.
