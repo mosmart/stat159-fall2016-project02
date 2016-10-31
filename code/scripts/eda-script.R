@@ -10,6 +10,7 @@ credit_quantitative <- credit_full[c('Income', 'Limit', 'Rating', 'Cards', 'Age'
 
 # Min, Q1, Median, Mean, Q3, Max
 summary <- summary(credit_quantitative)
+summary_stats <- summary(credit_quantitative)
 
 # Standard Deviations
 standard_deviation <- data.frame(sapply(credit_quantitative, function(x) sd(x)))
@@ -114,6 +115,10 @@ sink()
 sink('../../data/correlation-matrix.txt')
 cor_matrix
 sink()
+
+save(summary_stats, sd_range, frequency_gender, rel_frequency_gender, frequency_student, 
+     rel_frequency_student, frequency_married, rel_frequency_married, frequency_ethnicity,
+     rel_frequency_ethnicity, cor_matrix, anova, anova_summary, file='../../data/eda-output.RData')
 
 sink('../../data/anova.txt')
 anova
