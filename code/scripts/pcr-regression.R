@@ -26,11 +26,11 @@ dev.off()
 # Step 5: compute mse using test data
 x_test = as.matrix(test[,-c(2:3,12)])
 y_test = test[,12]
-pcr_pred = predict(pcr_cv, s = pcr_lambda, newx = x_test, ncomp=pcr_ncomp)
+pcr_pred = predict(pcr_cv, s = pcr_PRESS, newx = x_test, ncomp=pcr_ncomp) 
 pcr_test_mse = mse(pcr_pred,y_test)
 
 # Step 6: full model
-pcr_full <- pcr(Balance ~., data = test[,-c(2:3)], ncomp = 2)
+pcr_full <- pcr(Balance ~., data = test[,-c(2:3)], ncomp = pcr_ncomp)
 
 # save objects to file
 save(pcr_cv,pcr_PRESS, pcr_test_mse, pcr_full, file = "../../data/pcr-cv.RData")
