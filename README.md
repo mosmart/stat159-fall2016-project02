@@ -6,7 +6,7 @@
 Coduct a similar analysis to the ones performed by Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani in Chapter 6, *Linear Regression*, in "An Introduction to Statistical Learning." Also write functions and test them using the R `testthat` package and output a slide deck using io slides.
 
 ## File Structure
-<pre>
+<pre><code>
 stat159-fall2016-project2/
    README.md
    Makefile
@@ -14,30 +14,54 @@ stat159-fall2016-project2/
    session-info.txt
    .gitignore
    code/
-      functions/
-         ...
-      scripts/
-         ...
-      tests/
-         ...
-   data/
-      Credit.csv
+    README.md
+    functions/      # functions to run on regression models
+        regression-functions.R
+    scripts/        # EDA, scripts for each regression model and test/train data creation
+        data-processing-script.R
+        eda-script.R
+        lasso-regression.R
+        osl-regression.R
+        pcr-regression.R
+        pls-regression.R
+        regression-results.R
+        ridge-regression.R
+        session-info-script.R
+        test-that.R
+        train-test-data-script.R
+    tests/          # tests for regression functions
+        test-regression.R
+   data/              # contains all data for project including downloaded data and data created in project
+    README.md
+    Credit.csv
+    anova.txt
+    correlation-matrix.txt
+    eda-output.RData
+    lasso-cv.RData
+    osl.RData
+    pcr-cv.RData
+    plsr-cv.RData
+    regression-results.RData
+    scaled-credit.csv 
+    summary-stats.txt
+    train-test.RData
+   images/           # images created in the project to help with analysis
       ...
-   images/
-      ...
-   report/
-      report.pdf
-      report.Rmd
-      sections/
-         00-abstract.Rmd
-         01-introduction.Rmd
-         02-data.Rmd
-         03-methods.Rmd
-         04-analysis.Rmd
-         05-results.Rmd
-         06-conclusions.Rmd
-   slides/
-</pre>
+   report/           # report constructed from sections and presentation (slides)
+    report.pdf
+    report.Rmd
+    sections/
+        00-abstract.Rmd
+        01-introduction.Rmd
+        02-data.Rmd
+        03-methods.Rmd
+        04-analysis.Rmd
+        05-results.Rmd
+        06-conclusions.Rmd
+slides/              # presentation of methodology and findings
+    slides.Rmd
+    slides.html
+<code><pre>
 
 
 ## Replicating this analysis
