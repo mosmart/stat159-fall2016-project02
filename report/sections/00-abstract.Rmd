@@ -1,0 +1,10 @@
+---
+title: "Predictive Modeling"
+author: "Morgan Smart & Lauren Hanlon"
+date: "October 31, 2016"
+output: pdf_document
+---
+
+## Abstract
+
+This paper aligns with the analysis from Chapter 6 _Linear Model Selection and Regularization_ from "An Introduction to Statistical Learning" by James et all. This chapter looks at credit data and assesses what type of linear regression model will best fit the data to predict the response. To determine the most accurate linear model for this data, we look at shrinkage methods and dimension reduction methods to predict Balance (in thousands) in terms of ten predictors such as Income (in thousands), Age, Education, Gender, Ethnicity, etc. We then analyze the errors associated with each method to determine the optimal regression model to fit the data.
