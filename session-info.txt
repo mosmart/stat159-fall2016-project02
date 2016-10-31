@@ -1,0 +1,52 @@
+R version 3.2.2 (2015-08-14)
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+Running under: OS X 10.10 (Yosemite)
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] methods   stats     graphics  grDevices utils     datasets  base     
+
+other attached packages:
+[1] pls_2.5-0       glmnet_2.0-5    foreach_1.4.3   Matrix_1.2-2   
+[5] testthat_0.11.0 stargazer_5.2  
+
+loaded via a namespace (and not attached):
+[1] memoise_0.2.1    crayon_1.3.1     codetools_0.2-14 grid_3.2.2      
+[5] iterators_1.0.8  digest_0.6.8     lattice_0.20-33 
+git version 2.3.2 (Apple Git-55)
+pdfTeX 3.14159265-2.6-1.40.16 (TeX Live 2015)
+kpathsea version 6.2.1
+Copyright 2015 Peter Breitenlohner (eTeX)/Han The Thanh (pdfTeX).
+There is NO warranty.  Redistribution of this software is
+covered by the terms of both the pdfTeX copyright and
+the Lesser GNU General Public License.
+For more information about these matters, see the file
+named COPYING and the pdfTeX source.
+Primary author of pdfTeX: Peter Breitenlohner (eTeX)/Han The Thanh (pdfTeX).
+Compiled with libpng 1.6.17; using libpng 1.6.17
+Compiled with zlib 1.2.8; using zlib 1.2.8
+Compiled with xpdf version 3.04
+pandoc 1.17.2
+Compiled with texmath 0.8.6.4, highlighting-kate 0.6.2.1.
+Syntax highlighting is supported for the following languages:
+    abc, actionscript, ada, agda, apache, asn1, asp, awk, bash, bibtex, boo, c,
+    changelog, clojure, cmake, coffee, coldfusion, commonlisp, cpp, cs, css,
+    curry, d, diff, djangotemplate, dockerfile, dot, doxygen, doxygenlua, dtd,
+    eiffel, elixir, email, erlang, fasm, fortran, fsharp, gcc, glsl,
+    gnuassembler, go, hamlet, haskell, haxe, html, idris, ini, isocpp, java,
+    javadoc, javascript, json, jsp, julia, kotlin, latex, lex, lilypond,
+    literatecurry, literatehaskell, llvm, lua, m4, makefile, mandoc, markdown,
+    mathematica, matlab, maxima, mediawiki, metafont, mips, modelines, modula2,
+    modula3, monobasic, nasm, noweb, objectivec, objectivecpp, ocaml, octave,
+    opencl, pascal, perl, php, pike, postscript, prolog, pure, python, r,
+    relaxng, relaxngcompact, rest, rhtml, roff, ruby, rust, scala, scheme, sci,
+    sed, sgml, sql, sqlmysql, sqlpostgresql, tcl, tcsh, texinfo, verilog, vhdl,
+    xml, xorg, xslt, xul, yacc, yaml, zsh
+Default user data directory: /Users/laurenhanlon/.pandoc
+Copyright (C) 2006-2016 John MacFarlane
+Web:  http://pandoc.org
+This is free software; see the source for copying conditions.
+There is no warranty, not even for merchantability or fitness
+for a particular purpose.
