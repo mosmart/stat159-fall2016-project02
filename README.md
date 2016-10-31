@@ -61,7 +61,7 @@ stat159-fall2016-project2/
 slides/              # presentation of methodology and findings
     slides.Rmd
     slides.html
-<code><pre>
+</code></pre>
 
 
 ## Replicating this analysis
