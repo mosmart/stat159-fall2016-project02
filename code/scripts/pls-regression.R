@@ -12,7 +12,6 @@ set.seed(10)
 plsr_cv <- plsr(Balance ~., data = train[,-c(2:3)], validation = "CV")
 
 # best model
-plsr_ncomp <- plsr_cv$validation$PRESS
 plsr_PRESS <- min(plsr_cv$validation$PRESS)
 plsr_ncomp_all <- plsr_cv$validation$PRESS
 plsr_ncomp_use <- which(plsr_ncomp_all[1,]==plsr_PRESS)
