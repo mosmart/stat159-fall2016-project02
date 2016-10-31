@@ -31,12 +31,14 @@ regressions:
 	make pcr
 	make plsr
 
+sections: ./report/sections
+	cat ./report/sections/*.Rmd > ./report/report.Rmd
 
 report: ./report/report.Rmd ./data/*.RData ./images/*.png
 	cd ./report && { Rscript -e "rmarkdown::render('report.Rmd')" ; cd -; }
 
 slides:
-	cd ./report && { Rscript -e "rmarkdown::render('slides.Rmd')" ; cd -; }
+	cd ./slides && { Rscript -e "rmarkdown::render(‘slides.Rmd')" ; cd -; }
 
 session: ./code/scripts/session-info-script.R ./code/scripts/bash-info-script.sh
 	cd ./code/scripts && { Rscript session-info-script.R ; cd -; }
