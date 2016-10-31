@@ -1,0 +1,33 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(stargazer)
+library(knitr)
+load('../../data/osl.RData')
+load('../../data/ridge-cv.RData')
+load('../../data/lasso-cv.RData')
+load('../../data/pcr-cv.RData')
+load('../../data/plsr-cv.RData')
+load('../../data/regression-results.RData')
+```
+
+## Results
+
+### Regression coefficients for all methods
+
+```{r kable, echo=FALSE}
+kable(coefs_df)
+```
+
+### MSE values for the regression techniques (4)
+
+```{r, echo=FALSE}
+kable(mse_df)
+```
+
+### Plotting the official coefficients
+coefplot(ridge_full)
+
