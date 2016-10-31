@@ -13,8 +13,10 @@ set.seed(10)
 pcr_cv <- pcr(Balance ~., data = train[-c(2:3)], validation = "CV")
 
 # Step 3: best model
-pcr_lambda <- min(pcr_cv$validation$PRESS)
-pcr_ncomp <- pcr_cv$validation$PRESS
+pcr_PRESS <- min(pcr_cv$validation$PRESS)
+pcr_ncomp_all <- pcr_cv$validation$PRESS
+pcr_ncomp_use <- which(pcr_ncomp_all[1,]==pcr_PRESS)
+pcr_ncomp <- pcr_ncomp_use[[1]]
 
 # Step 4: plot variable coefficients vs. shrinkage parameter lambda.
 png("../../images/pcr-cv.png")
@@ -24,13 +26,13 @@ dev.off()
 # Step 5: compute mse using test data
 x_test = as.matrix(test[,-c(2:3,12)])
 y_test = test[,12]
-pcr_pred = predict(pcr_cv, s = pcr_lambda, newx = x_test, ncomp=2) 
+pcr_pred = predict(pcr_cv, s = pcr_lambda, newx = x_test, ncomp=pcr_ncomp)
 pcr_test_mse = mse(pcr_pred,y_test)
 
 # Step 6: full model
 pcr_full <- pcr(Balance ~., data = test[,-c(2:3)], ncomp = 2)
 
 # save objects to file
-save(pcr_cv,pcr_lambda, pcr_test_mse, pcr_full, file = "../../data/pcr-cv.RData")
+save(pcr_cv,pcr_PRESS, pcr_test_mse, pcr_full, file = "../../data/pcr-cv.RData")
 
 
