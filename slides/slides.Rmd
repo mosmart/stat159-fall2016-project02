@@ -2,11 +2,13 @@
 title: "Predictive Modeling"
 author: "Morgan Smart and Lauren Hanlon"
 date: "October 31, 2016"
-output: slidy_presentation
+output: ioslides_presentation
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
 ```
 
 ```{r, echo=FALSE}
