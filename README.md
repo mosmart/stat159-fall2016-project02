@@ -11,7 +11,7 @@ stat159-fall2016-project2/
    README.md
    Makefile
    LICENSE
-   session-info.txt
+   session-info.txt # contains versions used in project (output of session-info-script.R and bash-info-script.sh)
    .gitignore
    code/
     README.md
