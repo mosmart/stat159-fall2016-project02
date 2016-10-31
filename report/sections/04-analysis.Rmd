@@ -1,0 +1,58 @@
+---
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(stargazer)
+load('../../data/osl.RData')
+load('../../data/ridge-cv.RData')
+load('../../data/lasso-cv.RData')
+load('../../data/pcr-cv.RData')
+load('../../data/plsr-cv.RData')
+```
+
+## Analysis
+
+### OSL
+
+Our first method was OSL Regression. Below is the table of coefficients of each predictor when regressed against `Balance`
+
+```{r results='asis', echo=FALSE}
+library(stargazer)
+stargazer(osl_summary_fit$coefficients, title = 'Coefficient estimates OSL', type='latex', header=FALSE, summary=FALSE)
+```
+
+It is interesting to note those predictors which have a negative coefficient estimate on `Balance`. `Income`, `Education`, `Gender: Female`, and `Married: Yes` all have a negative relationship with `Balance`, indicating that an increase in any one of those categories (for `Gender` and `Married` this would simply be the boolean value of 1) would result in a decrease in `Balance`. 
+
+#### Lasso
+
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("../../images/lasso-cv.png")
+```
+
+The lambda value that minimizes mean-squared error lies at `r lasso_lambda`
+
+#### Ridge Regression
+
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("../../images/ridge-cv.png")
+```
+
+The lambda value that minimizes mean-squared error lies at `r ridge_lambda`
+
+#### Principle Component Analysis (PCA)
+
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("../../images/pcr-cv.png")
+```
+
+The number of components that minimizes the MSEP is `r pcr_PRESS`
+
+#### PLSR
+
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
+knitr::include_graphics("../../images/plsr-cv.png")
+```
+
+The number of components that minimizes the MSEP is `r plsr_PRESS`
