@@ -9,7 +9,6 @@ credit_full <- read.table('../../data/Credit.csv', header=TRUE, sep=',')
 credit_quantitative <- credit_full[c('Income', 'Limit', 'Rating', 'Cards', 'Age', 'Education', 'Balance')]
 
 # Min, Q1, Median, Mean, Q3, Max
-summary <- summary(credit_quantitative)
 summary_stats <- summary(credit_quantitative)
 
 # Standard Deviations
@@ -96,7 +95,7 @@ dev.off()
 
 # Save the data
 sink('../../data/summary-stats.txt')
-summary
+summary_stats
 sd_range
 print("Frequency Gender")
 frequency_gender
