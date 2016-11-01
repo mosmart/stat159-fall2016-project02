@@ -16,7 +16,6 @@ coefs_df <- data.frame(all_coefs)
 rownames(coefs_df) <- c('Income', 'Cards', 'Age', 'Education', 'GenderFemale', 'StudentFemale', 'MarriedYes', 'EthnicityAsian', 'EthnicityCaucasian')
 names(coefs_df) <- c('OSL', 'Lasso', 'Ridge', 'PCR', 'PLSR')
 
-save(coefs_df, mse_df, file='../../data/regression-results.RData')
 
 ## MSE values for regression techniques
 mse_values <- data.frame(c(lasso_test_mse, ridge_test_mse, pcr_test_mse, plsr_test_mse))
