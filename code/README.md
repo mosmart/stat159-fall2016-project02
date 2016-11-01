@@ -2,7 +2,7 @@
 
 ### Scripts
 
-`session-info-script.R` lists the required packages needed for this project, including `ggplot2`, `gclus`, `stargazer` and `testthat`. It's output is saved in `session-info.txt` in the main directory.
+`session-info-script.R` lists the required packages needed for this project, including `ggplot2`, `glmnet`, `stargazer`, `pls`, and `testthat`. It's output is saved in `session-info.txt` in the main directory.
 
 `bash-info-script.sh` is a command line script that gives the versions used of git, latex and pandoc. Output is appended to `session-info.txt`
 
