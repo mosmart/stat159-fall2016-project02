@@ -33,7 +33,7 @@ plsr_test_mse = mse(plsr_pred,y_test)
 plsr_full <- plsr(Balance ~., data = test[,-c(2:3)], ncomp = plsr_ncomp)
 
 # save objects to file
-save(plsr_cv,plsr_PRESS,plsr_test_mse, plsr_full, file = "../../data/plsr-cv.RData")
+save(plsr_cv,plsr_PRESS, plsr_ncomp, plsr_test_mse, plsr_full, file = "../../data/plsr-cv.RData")
 
 
 
