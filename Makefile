@@ -21,8 +21,8 @@ lasso: ./code/scripts/lasso-regression.R ./data/Credit.csv
 pcr: ./code/scripts/pcr-regression.R ./data/Credit.csv
 	cd ./code/scripts && { Rscript pcr-regression.R ; cd -; }
 
-plsr: ./code/scripts/plsr-regression.R ./data/Credit.csv
-	cd ./code/scripts && { Rscript plsr-regression.R ; cd -; }
+plsr: ./code/scripts/pls-regression.R ./data/Credit.csv
+	cd ./code/scripts && { Rscript pls-regression.R ; cd -; }
 
 regressions:
 	make ols
