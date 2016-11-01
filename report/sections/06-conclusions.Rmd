@@ -1,0 +1,7 @@
+---
+output: pdf_document
+---
+
+# Conclusion
+
+Of the models assessed in this analysis, we find that the Ridge model has the best predictive power of `Balance` because it has the lowest MSE of all the model and its estimated beta coefficients are consistant with the estimated coefficients of LASSO, OLS and PLSR. We also discover from our analysis that the analysis from Chapter 6 _Linear Model Selection and Regularization_ in "An Introduction to Statistical Learning" can be reproduced -- since we assessed what type of linear regression model will best fit the `Credit` dataset in order to predict `Balance` as assessed in the chapter. Similar to the analysis performed in Chapter 6, we've made this analysis reproducible as well: simply follow the instructions for reproducing our analysis in the `README.md` file in out [github repository](https://github.com/mosmart/stat159-fall2016-project02) for this analysis.
