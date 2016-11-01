@@ -7,6 +7,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(stargazer)
 load('../../data/eda-output.RData')
 credit <- read.csv("../../data/Credit.csv")
+# disable scientific notation
+options(scipen=999)
 ```
 
 ## Data
@@ -45,7 +47,7 @@ First, we look at the quantiative variables, specifically Income, Limit, Rating,
 stargazer(sd_range, title = 'Summary statistics quantitative variables', type='latex', header=FALSE, summary=FALSE)
 ```
 
-From these summary statistics, we note the wide range for Income as approximately `r round(sd_range["Income", "Range"],0)` (in thousands), as well as the range for Limit and Rating as 5000 and 340, respectively. Balance, or average credit card debt, also has a large spread, ranging from 0 to almost 2000. Our standard deviations for these high-range variables are also high, with a maximum standard deviation of over 2000 for Limit.
+From these summary statistics, we note the wide range for Income as approximately $`r round(sd_range["Income", "Range"],0)`$ (in thousands), as well as the range for Limit and Rating as $`r sd_range["Limit", "Range"]`$ and $`r round(sd_range["Rating", "Range"],0)`$, respectively. Balance, or average credit card debt, also has a large spread, with a range of $`r sd_range["Balance", "Range"]`$. Our standard deviations for these high-range variables are also high, with a maximum standard deviation of over $`r round(max(sd_range[, 1]),2)`$ for $`r row.names(sd_range[which(sd_range[,1]==max(sd_range[, 1])),])`$.
 
 Next, we look at the qualitative variables, incuding Gender, Student, Married and Ethnicity.
 
@@ -59,7 +61,7 @@ knitr::include_graphics("../../images/barchart-married.png")
 knitr::include_graphics("../../images/barchart-ethnicity.png")
 ```
 
-It is interesting to note the distribution of relative frequencies across these qualitative variables. While the relative frequency between gender is almost equivalent, the relative frequency of student varies by a factor of almost 0.8. The relative proportion of married individuals as well as Caucasian is higher than unmarried as well as African American and Asian.
+It is interesting to note the distribution of relative frequencies across these qualitative variables. While the relative frequency between gender is almost equivalent, there are many more non-students in the dataset than there are students. The relative proportion of married individuals as well as Caucasian is higher than unmarried as well as African American and Asian.
 
 ### Assocation between Balance and predictors
 
@@ -69,7 +71,7 @@ Because we are interested in studying the association between Balance and the re
 knitr::include_graphics("../../images/scatterplot-matrix.png")
 ```
 
-It is clear from the scatterplot matrix that the correlation between Limit and Rating almost represents a perfect linear relationship, while the correlation between Limit and Income as well as Rating and Income is also close to lienar. Since we are interested in Balance, we note that the correlation between Balance and Limit and Rating appears to be linear. The relationship between Balance and the other predictors seems to take more of a non-linear relationship. We will note the strong correlation between Balance and Limit and Rating and come back to this later when we build our model.
+It is clear from the scatterplot matrix that the correlation between Limit and Rating almost represents a perfect linear relationship, while the correlation between Limit and Income as well as Rating and Income is also close to linear. Since we are interested in Balance, we note that the correlation between Balance and Limit and Rating appears to be linear. The relationship between Balance and the other predictors seems to take more of a non-linear relationship. We will note the strong correlation between Balance and Limit and Rating and come back to this later when we build our model.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
 knitr::include_graphics("../../images/boxplot-gender.png")
@@ -91,4 +93,4 @@ Another important part of the pre-modeling data process was to mean center and s
 
 ### Training and testing sets
 
-To test our models, it was important for us to create training data (for the model to learn on) and testing data (to test how accurate our model is in predicting the response). Since our dataset contains 400 observations, our _training set_ is comprised of 300 random samples, and our _testing  set_ is 100 observations.
+To test our models, it was important for us to create training data (for the model to learn on) and testing data (to test how accurate our model is in predicting the response). Creating a training set and using it to fit all of our models allows us to directly compare each models' predictability of the test data directly to that of the other models. Since our dataset contains `r nrow(credit)` observations, we randomly sampled 75% of the data (`r nrow(credit)*.75` rows) as our _training set_ and the remaining 25% of the data (`r nrow(credit)*.25` rows) as our _testing  set_.
