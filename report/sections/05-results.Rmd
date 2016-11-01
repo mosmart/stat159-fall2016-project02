@@ -3,14 +3,10 @@ output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(stargazer)
 library(knitr)
-load('../../data/osl.RData')
-load('../../data/ridge-cv.RData')
-load('../../data/lasso-cv.RData')
-load('../../data/pcr-cv.RData')
-load('../../data/plsr-cv.RData')
+load('../../data/eda-output.RData')
 load('../../data/regression-results.RData')
 ```
 
@@ -18,16 +14,38 @@ load('../../data/regression-results.RData')
 
 ### Regression coefficients for all methods
 
+Because each model we fit uses a different method to fit the betas, the beta coefficients are different for each model. This is evident in the table below.
+
 ```{r kable, echo=FALSE}
 kable(coefs_df)
 ```
 
-### MSE values for the regression techniques (4)
+However, we note that many of the features have a similar magnitude on `Balance` for all of the models. For example, for OLS, Lasso, Ridge, and PLSR, `Income` has the greatest magnitude on `Balance` out of all the features. We also notice that other feature magnitudes tend to be similar across the models, such as that of `Student:Female` and also `Married:Yes`.
+
+### Plotting the official coefficients
+
+To get a better understanding of how to coefficient values differ across models, we plot the coefficient values for each model in the following overlapping line chart.
+
+``` {r, echo = FALSE}
+par(mar=c(7, 5, 2, 2))
+matplot(coefs_df, type = "l", xaxt = "n", ylab = "Coefficient Estimate", col = c(1:5))
+axis(1, at = 1:9, labels = row.names(coefs_df), cex.axis = 0.7, las = 2)
+legend("topright", inset=.05, legend=c("OLS", "Lasso", "Ridge", "PCR", "PLSR"), pch=1, col=c(1:5), horiz=FALSE, bty = "n")
+title("Official Coefficients")
+```
+
+From this line chart, we see that the coefficients of PCR are the most stable and most different than that of the other models. OLD, Ridge, LASSO, and PLSR all estimate similar coefficient values for each feature. Coefficient estimate consistancy across models informs us that the coefficient magnitudes aren't being inflatted or deflatted due to a model's paramters, but rather are being estimated in a less-biased way. When chosing one model in order to predict `Balance`, we look to chose a model having estimated coefficients consistant with other models.
+
+### MSE values for the regression techniques
+
+To determine which model has the most predictive power of `Balance`, we compare the MSE of the various models.
 
 ```{r, echo=FALSE}
 kable(mse_df)
 ```
 
-### Plotting the official coefficients
-coefplot(ridge_full)
+From the above table, we see the minimum MSE is that of Ridge ($`r min(mse_df[, 1])`$). This tells us that our Ridge model predicts `Balance` within plus or minus $`r round(min(mse_df[, 1])*1000,0)`. Considering the standard deviation of `Balance` is $`r sd_range["Balance", "SD"]`$, this means we can predict `Balance` within just over one standard deviation using our Ridge model. Although predicting `Balance` within less than one standard deviation would be more ideal, our Ridge model predicts `Balance` within the smallest range of all of our tested models. Because the Ridge coefficients fall in line with that of 3 other models (LASSO, PLSR, and OLS) and because it has the minimum MSE, we decide that of the models ran, Ridge has the best predictability of `Balance`.
+
+
+
 
