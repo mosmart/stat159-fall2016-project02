@@ -1,6 +1,6 @@
 ## Data 
 
-Advertising.csv is the data uploaded from [here](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv). Credit given to Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
+Credit.csv is the data uploaded from [here](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv). Credit given to Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani.
 
 `summary-stats.txt`, `anova.txt`, `eda-output.RData` and `correlation-matrix.RData` is the output from `eda-script.R`
 
