@@ -33,6 +33,6 @@ pcr_test_mse = mse(pcr_pred,y_test)
 pcr_full <- pcr(Balance ~., data = test[,-c(2:3)], ncomp = pcr_ncomp)
 
 # save objects to file
-save(pcr_cv,pcr_PRESS, pcr_test_mse, pcr_full, file = "../../data/pcr-cv.RData")
+save(pcr_cv,pcr_PRESS, pcr_ncomp, pcr_test_mse, pcr_full, file = "../../data/pcr-cv.RData")
 
 
