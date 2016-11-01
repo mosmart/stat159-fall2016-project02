@@ -1,4 +1,6 @@
-.PHONY: all data tests eda old ridge lasso per plsr regressions report slides session clean
+.PHONY: all data tests eda ols ridge lasso pcr plsr regressions report slides session sections clean
+
+all: eda regressions sections report slides
 
 data:
 	cd ./data && { curl -O http://www-bcf.usc.edu/~gareth/ISL/Credit.csv ; cd -; }
