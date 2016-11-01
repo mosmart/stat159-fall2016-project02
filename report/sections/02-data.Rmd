@@ -6,11 +6,12 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 library(stargazer)
 load('../../data/eda-output.RData')
+credit <- read.csv("../../data/Credit.csv")
 ```
 
 ## Data
 
-The Credit data set is 400 x 12 in dimensions. There are _n_ = 200 rows (data points) and there are 12 columns (variables):
+The Credit data set is `r nrow(credit)` x `r ncol(credit)` in dimensions. There are _n_ = `r nrow(credit)` rows (data points) and there are `r ncol(credit)` columns (variables):
 
 - `X`: row index
 
@@ -38,13 +39,13 @@ The Credit data set is 400 x 12 in dimensions. There are _n_ = 200 rows (data po
 
 ### Descriptive Statistics
 
-First, we take a look at the quantiative variables, specifically Income, Limit, Rating, Cards, Age, Education and Balance.
+First, we look at the quantiative variables, specifically Income, Limit, Rating, Cards, Age, Education and Balance.
 
 ```{r results='asis', echo=FALSE}
 stargazer(sd_range, title = 'Summary statistics quantitative variables', type='latex', header=FALSE, summary=FALSE)
 ```
 
-From these summary statistics, we note the wide range for Income as approximately 176 (in thousands), as well as the range for Limit and Rating as 5000 and 340, respectively. Balance, or average credit card debt, also has a large spread, ranging from 0 to almost 2000. Our standard deviations for these high-range variables are also high, with a maximum standard deviation of over 2000 for Limit.
+From these summary statistics, we note the wide range for Income as approximately `r round(sd_range["Income", "Range"],0)` (in thousands), as well as the range for Limit and Rating as 5000 and 340, respectively. Balance, or average credit card debt, also has a large spread, ranging from 0 to almost 2000. Our standard deviations for these high-range variables are also high, with a maximum standard deviation of over 2000 for Limit.
 
 Next, we look at the qualitative variables, incuding Gender, Student, Married and Ethnicity.
 
