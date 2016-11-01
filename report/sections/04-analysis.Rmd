@@ -1,15 +1,13 @@
----
-output: pdf_document
----
 
-```{r setup, include=FALSE}
+
+```{r setup2, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(stargazer)
-load('../../data/osl.RData')
-load('../../data/ridge-cv.RData')
-load('../../data/lasso-cv.RData')
-load('../../data/pcr-cv.RData')
-load('../../data/plsr-cv.RData')
+load('../data/osl.RData')
+load('../data/ridge-cv.RData')
+load('../data/lasso-cv.RData')
+load('../data/pcr-cv.RData')
+load('../data/plsr-cv.RData')
 ```
 
 ## Analysis
@@ -30,7 +28,7 @@ It is interesting to note those predictors which have a negative coefficient est
 Next we ran a LASSO regression: fitting the model using out training data and cross-validating to determine the lambda value that minimizes mean-squared error. From this cross-validation, we found this minimum lambda value to be `r lasso_lambda`.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center"}
-knitr::include_graphics("../../images/lasso-cv.png")
+knitr::include_graphics("../images/lasso-cv.png")
 ```
 
 We then ran this model on our test data to produce the model's MSE (telling us within what range we can predict `Balance`) and finally ran the model on our full dataset to produce the model's coeficients.
@@ -40,7 +38,7 @@ We then ran this model on our test data to produce the model's MSE (telling us w
 We also ran a Ridge regression using the same methods as the LASSO regression. First we fit the model using out training data and cross-validated to determine the lambda value that minimizes mean-squared error: `r ridge_lambda`.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center"}
-knitr::include_graphics("../../images/ridge-cv.png")
+knitr::include_graphics("../images/ridge-cv.png")
 ```
 
 Then we ran the model with this lambda on our test data to produce the model's MSE. Last, we ran the model on our full dataset to produce the model's coeficients.
@@ -50,7 +48,7 @@ Then we ran the model with this lambda on our test data to produce the model's M
 Our method for fitting a PCR model is similar to our methods for fitting our LASSO and Ridge models in that we first fit the model using out training data and cross-validate. However, rather than solving for a lambda value, we now solve for the number of components with the smallest Predictive Residual Error Sum of Squares ($PRESS$). This number of components will explain the most variance in the response and thus will be the best model of our PCR models. Fom our cross-validation, we find the number of components with the minimum $PRESS$ value to be `r pcr_ncomp`.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center"}
-knitr::include_graphics("../../images/pcr-cv.png")
+knitr::include_graphics("../images/pcr-cv.png")
 ```
 
 Again similar to the process of both LASSO and Ridge, we then ran the model with this number of components on our test data to produce the model's MSE and finally ran the model on our full dataset to produce the model's coeficients.
@@ -60,7 +58,7 @@ Again similar to the process of both LASSO and Ridge, we then ran the model with
 The final model was fit was PLSR. Like PLSR, we first fit the model using our training data and cross-validated to determine the number of components with the minimum $PRESS$: `r plsr_ncomp`.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center"}
-knitr::include_graphics("../../images/plsr-cv.png")
+knitr::include_graphics("../images/plsr-cv.png")
 ```
 
 Then ran the model with this number of components on our test data to produce the model's MSE and finally ran the model on our full dataset to produce the model's coeficients.

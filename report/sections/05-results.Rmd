@@ -1,13 +1,11 @@
----
-output: pdf_document
----
 
-```{r setup, include=FALSE}
+
+```{r setup3, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 library(stargazer)
 library(knitr)
-load('../../data/eda-output.RData')
-load('../../data/regression-results.RData')
+load('../data/eda-output.RData')
+load('../data/regression-results.RData')
 ```
 
 ## Results

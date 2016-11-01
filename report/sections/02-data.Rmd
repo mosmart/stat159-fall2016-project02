@@ -1,12 +1,10 @@
----
-output: pdf_document
----
 
-```{r setup, include=FALSE}
+
+```{r setup1, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(stargazer)
-load('../../data/eda-output.RData')
-credit <- read.csv("../../data/Credit.csv")
+load('../data/eda-output.RData')
+credit <- read.csv("../data/Credit.csv")
 # disable scientific notation
 options(scipen=999)
 ```
@@ -52,13 +50,13 @@ From these summary statistics, we note the wide range for Income as approximatel
 Next, we look at the qualitative variables, incuding Gender, Student, Married and Ethnicity.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
-knitr::include_graphics("../../images/barchart-gender.png")
-knitr::include_graphics("../../images/barchart-student.png")
+knitr::include_graphics("../images/barchart-gender.png")
+knitr::include_graphics("../images/barchart-student.png")
 ```
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
-knitr::include_graphics("../../images/barchart-married.png")
-knitr::include_graphics("../../images/barchart-ethnicity.png")
+knitr::include_graphics("../images/barchart-married.png")
+knitr::include_graphics("../images/barchart-ethnicity.png")
 ```
 
 It is interesting to note the distribution of relative frequencies across these qualitative variables. While the relative frequency between gender is almost equivalent, there are many more non-students in the dataset than there are students. The relative proportion of married individuals as well as Caucasian is higher than unmarried as well as African American and Asian.
@@ -68,19 +66,19 @@ It is interesting to note the distribution of relative frequencies across these 
 Because we are interested in studying the association between Balance and the rest of the predictors, we created a visual representation of the correlation between Balance and each variable. We created a scatterplot matrix between Balance and the quantitative variables, and created conditional boxplots for each of the qualitative variables.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center"}
-knitr::include_graphics("../../images/scatterplot-matrix.png")
+knitr::include_graphics("../images/scatterplot-matrix.png")
 ```
 
 It is clear from the scatterplot matrix that the correlation between Limit and Rating almost represents a perfect linear relationship, while the correlation between Limit and Income as well as Rating and Income is also close to linear. Because the relationship between Income, Limit, and Rating is strong, we don't use Limit or Rating in our models because their effect on Balance is captured by Income. Since we are interested in Balance, we note that the correlation between Balance and Limit and Rating appears to be linear. The relationship between Balance and the other predictors seems to take more of a non-linear relationship. We will note the strong correlation between Balance and Limit and Rating and come back to this later when we build our model.
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
-knitr::include_graphics("../../images/boxplot-gender.png")
-knitr::include_graphics("../../images/boxplot-student.png")
+knitr::include_graphics("../images/boxplot-gender.png")
+knitr::include_graphics("../images/boxplot-student.png")
 ```
 
 ```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
-knitr::include_graphics("../../images/boxplot-married.png")
-knitr::include_graphics("../../images/boxplot-ethnicity.png")
+knitr::include_graphics("../images/boxplot-married.png")
+knitr::include_graphics("../images/boxplot-ethnicity.png")
 ```
 
 In these conditional boxplots we can see that there is some variation in each boxplot amongst the different options, and in the conditional boxplot of Balance on Student, we note a higher difference in Balance between students and non-students.
