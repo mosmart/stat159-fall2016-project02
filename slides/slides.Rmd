@@ -5,7 +5,7 @@ date: "October 31, 2016"
 output: ioslides_presentation
 ---
 
-```{r setup, include=FALSE}
+```{r setup 3, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
@@ -23,15 +23,16 @@ load('../data/plsr-cv.RData')
 load('../data/regression-results.RData')
 ```
 
+# Overview
+
 ## Overview
 
 - This presentation gives an overview of how different regression models can be applied to a dataset to predict an attribute
 - We will be using the Credit dataset from "An Introduction to Statistical Learning" by James et all.
 
-## Data
+# Data
 
-The Credit data set is 400 x 12 in dimensions. There are _n_ = 200 rows (data points) and there are 12 columns (variables):
-
+##Data
 - `X`: row index
 - `Income`: income (in thousands of dollars)
 - `Limit`: credit limit
@@ -45,51 +46,63 @@ The Credit data set is 400 x 12 in dimensions. There are _n_ = 200 rows (data po
 - `Ethnicity`: Caucasian, African American or Asian
 - `Balance`: average credit card debt
 
-## Quantitative Data
+## Quantitative Data {.flexbox .vcenter}
 
-First, some summary statistics about our data. Fix this
+First, some summary statistics about our data.
 
-```{r results='asis', echo=FALSE}
-stargazer(sd_range, title = 'Summary statistics quantitative variables', type='latex', header=FALSE, summary=FALSE)
+```{r results='asis', echo=FALSE, fig.align="center"}
+stargazer(sd_range, title = 'Summary statistics quantitative variables', type='html', header=FALSE, summary=FALSE)
 ```
 
-## Qualitative Data
+- Large ranges for `Income` (in thousands), `Limit` and `Rating`
+- `Balance` also has a large spread, with a range of $`r sd_range["Balance", "Range"]`$
+
+## Qualitative Data {.flexbox .vcenter}
 
 Next, we look at the qualitative variables and their relative frequencies.
 
-```{r, out.width = "400px", echo=FALSE, fig.align="center, fig.show='hold'"}
+```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
 knitr::include_graphics("../images/barchart-gender.png")
 knitr::include_graphics("../images/barchart-student.png")
 ```
 
-```{r, out.width = "400px", echo=FALSE, fig.align="center, fig.show='hold'"}
+```{r, out.width = "200px", echo=FALSE, fig.align="center, fig.show='hold'"}
 knitr::include_graphics("../images/barchart-married.png")
 knitr::include_graphics("../images/barchart-ethnicity.png")
 ```
 
 ## Assocation between Balance and predictors
 
-Because we are interested in studying the association between Balance and the rest of the predictors, we created a visual representation of the correlation between Balance and each variable. We created a scatterplot matrix between Balance and the quantitative variables, and created conditional boxplots for each of the qualitative variables.
+Visual representation of the correlation between `Balance` and each variable. 
 
-```{r, out.width = "500px", echo=FALSE, fig.align="center"}
+```{r, out.width = "200px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("../images/scatterplot-matrix.png")
 ```
+- Correlation between `Balance` and `Limit` and `Rating` appears to be linear 
+
+- Relationship between `Balance` and the other predictors less of a non-linear relationship
+
+# Methodology
 
 ## Methods
 
--Ordinary Least Squares
+_Ordinary Least Squares_: OLS is an approach to predicting a quantitative response $Y$ based on a multiple predictor variables $X_1$ through $X_p$, where $Y$ and $X_1$ through $X_p$ are vectors and each value in each $X_{ij}$ ($x_{ij}$) has a corresponding value in $Y$ ($y_i$).
 
-_Shrinkage Methods_
+_Shrinkage Methods_: Shrinkage is a general technique to improve a least-squares estimator which consists in reducing the variance by adding constraints on the value of coefficients.
 
--Ridge regression
+- Ridge regression
 
--Lasso regression
+- Lasso regression
 
-_Dimension Reduction Methods_
+## Methods (cont.)
 
--Principal Components regression
+_Dimension Reduction Methods_: dimension reduction is the process of reducing the number of random variables under consideration, via obtaining a set of principal variables.
 
--Partial Least Squares regression
+- Principal Components regression (PCR)
+
+- Partial Least Squares regression (PLSR)
+
+# Analysis
 
 ## OSL
 
@@ -97,48 +110,51 @@ Our first method was OSL Regression. Below is the table of coefficients of each 
 
 ```{r results='asis', echo=FALSE}
 library(stargazer)
-stargazer(osl_summary_fit$coefficients, title = 'Coefficient estimates OSL', type='latex', header=FALSE, summary=FALSE)
+stargazer(osl_summary_fit$coefficients, title = 'Coefficient estimates OSL', type='html', header=FALSE, summary=FALSE)
 ```
+
+## OSL Results
+
+- `Income`, `Education`, `Gender: Female`, and `Married: Yes` all have a negative relationship with `Balance`
+- Increase in any one of those categories would result in a decrease in `Balance`.
 
 ## Lasso
 
-Add in a description of what Lasso is
+LASSO regression: fitting the model using out training data and cross-validating to determine the lambda value that minimizes mean-squared error.
 
-```{r, out.width = "500px", echo=FALSE, fig.align="center"}
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("../images/lasso-cv.png")
 ```
 
-The lambda value that minimizes mean-squared error lies at `r lasso_lambda`
+From this cross-validation, we found this minimum lambda value to be `r lasso_lambda`.
 
 ## Ridge Regression
 
-Add in a description of what Ridge is
+We also ran a Ridge regression using the same methods as the LASSO regression. First we fit the model using out training data and cross-validated to determine the lambda value that minimizes mean-squared error: `r ridge_lambda`.
 
-```{r, out.width = "500px", echo=FALSE, fig.align="center"}
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("../images/ridge-cv.png")
 ```
 
-The lambda value that minimizes mean-squared error lies at `r ridge_lambda`
-
 ## Principle Component Analysis (PCA)
 
-Add in a description of what PCA is
+PCR fits the data the same way, but we now solve for the number of components with the smallest Predictive Residual Error Sum of Squares ($PRESS$).
 
-```{r, out.width = "500px", echo=FALSE, fig.align="center"}
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("../images/pcr-cv.png")
 ```
 
-The number of components that minimizes the MSEP is `r pcr_PRESS`
+Fom our cross-validation, we find the number of components with the minimum $PRESS$ value to be `r pcr_ncomp`.
 
 ## PLSR
 
-Add in a description of what PLSR is
+Like PLSR, we first fit the model using our training data and cross-validated to determine the number of components with the minimum $PRESS$: `r plsr_ncomp`.
 
-```{r, out.width = "500px", echo=FALSE, fig.align="center"}
+```{r, out.width = "300px", echo=FALSE, fig.align="center"}
 knitr::include_graphics("../images/plsr-cv.png")
 ```
 
-The number of components that minimizes the MSEP is `r plsr_PRESS`
+# Results
 
 ## Regression coefficients for all methods
 
@@ -146,12 +162,34 @@ The number of components that minimizes the MSEP is `r plsr_PRESS`
 kable(coefs_df)
 ```
 
-## MSE values for the regression techniques (4)
+### Plotting the official coefficients
+
+To get a better understanding of how to coefficient values differ across models, we plot the coefficient values for each model in the following overlapping line chart.
+
+``` {r, echo = FALSE}
+par(mar=c(7, 5, 2, 2))
+matplot(coefs_df, type = "l", xaxt = "n", ylab = "Coefficient Estimate", col = c(1:5))
+axis(1, at = 1:9, labels = row.names(coefs_df), cex.axis = 0.7, las = 2)
+legend("topright", inset=.05, legend=c("OLS", "Lasso", "Ridge", "PCR", "PLSR"), pch=1, col=c(1:5), horiz=FALSE, bty = "n")
+title("Official Coefficients")
+```
+
+Coefficients of PCR are the most stable and most different than that of the other models. OSL, Ridge, LASSO, and PLSR all estimate similar coefficient values for each feature.
+
+## MSE values for the regressions
+
+To determine which model has the most predictive power of `Balance`, we compare the MSE of the various models.
 
 ```{r, echo=FALSE}
 kable(mse_df)
 ```
 
-## Plotting the official coefficients
+Because the Ridge coefficients fall in line with that of 3 other models (LASSO, PLSR, and OLS) and because it has the minimum MSE, we decide that of the models ran, Ridge has the best predictability of `Balance`.
+
+# Conclusion
 
 ## Conclusion
+
+And the winning model is... Ridge!
+
+Of the models assessed in this analysis, we find that the Ridge model has the best predictive power of `Balance` because it has the lowest MSE of all the model and its estimated beta coefficients are consistant with the estimated coefficients of LASSO, OLS and PLSR
