@@ -1,2 +1,8 @@
 .Rapp.history
 .log
+
+code/scripts/.Rhistory
+
+code/scripts/.RData
+
+report/sections/.Rhistory
