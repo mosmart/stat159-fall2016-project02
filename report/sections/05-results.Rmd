@@ -32,7 +32,7 @@ legend("topright", inset=.05, legend=c("OLS", "Lasso", "Ridge", "PCR", "PLSR"), 
 title("Official Coefficients")
 ```
 
-From this line chart, we see that the coefficients of PCR are the most stable and most different than that of the other models. OLD, Ridge, LASSO, and PLSR all estimate similar coefficient values for each feature. Coefficient estimate consistancy across models informs us that the coefficient magnitudes aren't being inflatted or deflatted due to a model's paramters, but rather are being estimated in a less-biased way. When chosing one model in order to predict `Balance`, we look to chose a model having estimated coefficients consistant with other models.
+From this line chart, we see that the coefficients of PCR are the most stable and most different than that of the other models. OSL, Ridge, LASSO, and PLSR all estimate similar coefficient values for each feature. Coefficient estimate consistancy across models informs us that the coefficient magnitudes aren't being inflatted or deflatted due to a model's paramters, but rather are being estimated in a less-biased way. When chosing one model in order to predict `Balance`, we look to chose a model having estimated coefficients consistant with other models.
 
 ### MSE values for the regression techniques
 
