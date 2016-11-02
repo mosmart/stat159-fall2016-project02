@@ -11,6 +11,7 @@ stat159-fall2016-project2/
    README.md
    Makefile
    LICENSE
+   session.sh       # includes session info of tools used in project
    session-info.txt # contains versions used in project (output of session-info-script.R and bash-info-script.sh)
    .gitignore
    code/
@@ -66,7 +67,7 @@ slides/              # presentation of methodology and findings
 
 ## Replicating this analysis
 1. Clone this gitHub folder `stat159-fall2016-project02`
-2. Navigate to the parent directory and look at the file `session-info.txt` to know what libraries must be installed in order to run the analysis and other information generated from the output of the function `sessionInfo()`
+2. Navigate to the parent directory and look at the file `session-info.txt` to know what libraries must be installed in order to run the analysis and other information generated from the output of the function `sessionInfo()`. This also includes versions of tools used in this project.
 3.  After verifying that you have the required packages and version of R, in the parent directory, run the command `make data` to download the dataset `Credit.csv` used for all testing and analysis
 4. In the parent directory still, run the command `make tests` to test that the functions that generate regression summary statistics work (this is NOT in the paper, but was a requirment of the assignment).
 5. Still in the parent directory, run the command `make all` to run the regression analysis, output images and `.RData` objects, knit `report.Rmd` to the final paper PDF output, and knit `slides.Rmd` to produce the slides describing the final paper in presentation form.
